@@ -168,6 +168,10 @@ namespace RCMendoza.Models.ModelDB
 
                 entity.Property(e => e.FkTipodocumento).HasColumnName("fk_tipodocumento");
 
+                entity.Property(e => e.Numerodoc)
+                    .HasMaxLength(100)
+                    .HasColumnName("numerodoc");
+
                 entity.Property(e => e.Numerodocumento)
                     .HasMaxLength(30)
                     .HasColumnName("numerodocumento");
@@ -298,6 +302,10 @@ namespace RCMendoza.Models.ModelDB
                 entity.Property(e => e.Nombres)
                     .HasMaxLength(100)
                     .HasColumnName("nombres");
+
+                entity.Property(e => e.Numerodoc)
+                    .HasMaxLength(100)
+                    .HasColumnName("numerodoc");
 
                 entity.Property(e => e.Telefono)
                     .HasMaxLength(9)

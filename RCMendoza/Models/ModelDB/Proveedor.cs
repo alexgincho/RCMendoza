@@ -20,6 +20,7 @@ namespace RCMendoza.Models.ModelDB
         public string Telefono { get; set; }
         public int? FkTipodocumento { get; set; }
         public int? FkDistrito { get; set; }
+        public string Numerodoc { get; set; }
 
         public virtual Distrito FkDistritoNavigation { get; set; }
         public virtual Tipodocumento FkTipodocumentoNavigation { get; set; }

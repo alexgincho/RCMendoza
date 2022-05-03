@@ -18,6 +18,7 @@ namespace RCMendoza.Models.ModelDB
         public DateTime? Fecharegistro { get; set; }
         public int? FkTipodocumento { get; set; }
         public int? FkRoles { get; set; }
+        public string Numerodoc { get; set; }
 
         public virtual Role FkRolesNavigation { get; set; }
         public virtual Tipodocumento FkTipodocumentoNavigation { get; set; }
