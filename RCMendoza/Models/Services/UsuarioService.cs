@@ -1,4 +1,5 @@
-﻿using RCMendoza.Models.Interfaces;
+﻿using RCMendoza.Helpers;
+using RCMendoza.Models.Interfaces;
 using RCMendoza.Models.ModelDB;
 using RCMendoza.Response;
 using System;
@@ -25,7 +26,7 @@ namespace RCMendoza.Models.Services
                     oModel.Email = usuario.Email;
                     oModel.Direccion = usuario.Direccion;   
                     oModel.Telefono = usuario.Telefono; 
-                    oModel.Contrasenia = usuario.Contrasenia;   
+                    oModel.Contrasenia = Encrypt.GetSHA256(usuario.Contrasenia);   
                     oModel.FkRoles = usuario.FkRoles;   
                     oModel.FkTipodocumento = usuario.FkTipodocumento;
                     oModel.Fecharegistro = DateTime.Now;
