@@ -6,6 +6,43 @@
     <title>@ViewData["Title"] - RCMendoza</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/lib/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="~/lib/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="~/lib/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/lib/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/lib/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="~/lib/Plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" />
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="~/lib/Plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/Plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/Plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
 </head>
 <body>
     <header>
@@ -29,11 +66,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
             @RenderBody()
-        </main>
-    </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -43,6 +76,44 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    <!-- Jquery JS-->
+    <script src="~/lib/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/lib/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/lib/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="~/lib/slick/slick.min.js">
+    </script>
+    <script src="~/lib/wow/wow.min.js"></script>
+    <script src="~/lib/animsition/animsition.min.js"></script>
+    <script src="~/lib/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="~/lib/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/lib/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="~/lib/circle-progress/circle-progress.min.js"></script>
+    <script src="~/lib/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/lib/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/lib/select2/select2.min.js">
+    </script>
+    <!-- SWEETALERT -->
+    <script src="~/lib/Plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Borrar-->
+    <script src="~/lib/Plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/lib/Plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/Plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/Plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/Plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/Plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+
+    <script src="~/lib/Plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/lib/Plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/lib/Plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- Borrar-->
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
