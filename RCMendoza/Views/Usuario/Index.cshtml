@@ -1,4 +1,31 @@
-﻿@{
-    Layout = "_Layout";
+﻿@model IEnumerable<RCMendoza.Models.ModelDB.Usuario>
+@{
+    Layout = "_Layout3";
     ViewBag.Title = "Usuario";
+}
+
+<body class="animsition">
+    <div class="page-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" id="btnAddUsuario" data-target="#staticBackdrop"><i class="fas fa-user-plus"></i>  Agregar Usuario</button>
+                    </div>
+                </div>
+                <div class="modal-container"></div> <!-- Contenedor del Modal-->
+                <div class="row">
+                    <div class="col-md-12 mt-5">
+                        <div class="conten-table">
+                            <table id="TablePersonal" class="table table-borderless table-striped table-earning">
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@section Scripts {
+     <script src="~/js/Usuario/Index.js"></script>
 }

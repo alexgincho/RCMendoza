@@ -18,6 +18,15 @@ namespace RCMendoza.Controllers
         {
             return View();
         }
+        public IActionResult MantenimientoUsuario()
+        {
+            Usuario entity = null;
+            return PartialView("_MantenimientoUsuario",entity ?? new Usuario());
+        }
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> MantenimientoUsuario([FromBody] Usuario usuario)
