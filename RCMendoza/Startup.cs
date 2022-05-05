@@ -29,6 +29,7 @@ namespace RCMendoza
             //services.AddControllers().AddJsonOptions(x =>
             //        x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IProductoService, ProductoService>();
             services.AddControllersWithViews();
         }
 
