@@ -19,6 +19,29 @@ namespace RCMendoza.Controllers
             return View();
         }
 
+        public IActionResult GetProductosAll()
+        {
+            Respuesta rpta = new Respuesta();
+            try
+            {
+                var LstProducto = IProducto.GetAll();
+                if (true)
+                {
+                    rpta.Data = LstProducto;
+                    rpta.State = 200;
+                    rpta.Message = "Success";
+                }
+                else { throw new Exception(); }
+            }
+            catch (Exception ex)
+            {
+                rpta.Data = null;
+                rpta.State = 400;
+                rpta.Message = "Error";
+            }
+            return Ok(rpta);
+        }
+
         [HttpPost]
         public async Task<IActionResult> MantenimientoProducto([FromBody] Producto producto)
         {

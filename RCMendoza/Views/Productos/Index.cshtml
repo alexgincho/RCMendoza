@@ -12,7 +12,6 @@
     <div class="py-3">
         <div class="container my-3">
             <div class="text-center">
-                <h1 class="display-4 fw-bolder">Productos</h1>
             </div>
         </div>
     </div>
@@ -64,7 +63,7 @@
 
     function listarProductos() {
         jQuery.ajax({
-            url: '@Url.Action("GetAllProductos", "Productos")',
+            url: '@Url.Action("GetProductosAll", "Productos")',
             type: "GET",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
