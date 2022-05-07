@@ -80,12 +80,12 @@ namespace RCMendoza.Models.Services
             }
             return result;
         }
-        public async Task<Result> Get(int id)
+        public Usuario Get(int id)
         {
-            Result result = null;
+            Usuario usuario = null;
             try
             {
-                result = new Result();
+                usuario = new Usuario();
                 using (var db = new DBContext())
                 {
                     #region consulta low
@@ -116,20 +116,20 @@ namespace RCMendoza.Models.Services
                                    }).FirstOrDefault();
                     if(oModel != null)
                     {
-                        result.Success = true;
-                        result.Message = "Usuario Encontrado";
-                        result.Data = oModel;
+                        // result.Success = true;
+                        // result.Message = "Usuario Encontrado";
+                        usuario = oModel;
                     }
                     else { throw new Exception(); }
                 }
             }
             catch (Exception ex)
             {
-                result.Success = false;
-                result.Message = ex.Message;
-                result.Data = null;
+                // result.Success = false;
+                // result.Message = ex.Message;
+                usuario = null;
             }
-            return result;
+            return usuario;
         }
 
         public async Task<Result> GetAll()

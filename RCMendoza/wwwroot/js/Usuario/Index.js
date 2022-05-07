@@ -45,9 +45,11 @@ $(document).ready(function () {
             { targets: 6, width: 210 },
             { targets: 7, width: 150 },
             { targets: 8, width: 100 },
-            { targets: 9, width: 100 }
+            { targets: 9, width: 100 },
+            { targets: 10, width: 100 }
         ],
         columns: [
+            { data: "fkTipodocumento", title: "Tipo Doc" },
             { data: "numerodoc", title: "Dni" },
             { data: "nombres", title: "Nombre" },
             { data: "apellidopaterno", title: "Apellido Paterno" },
@@ -56,6 +58,7 @@ $(document).ready(function () {
             { data: "direccion", title: "Direccion" },
             { data: "email", title: "Email" },
             { data: "fecharegistro", title: "Fecha de Registro" },
+            { data: "fkRoles", title: "Cargo" },
             {
                 data: null,
                 defaultContent: "<button type='button' id='btnEditar' class='btn btn-primary'><i class='fas fa-pen-square'></i></i></button>",
@@ -64,14 +67,15 @@ $(document).ready(function () {
                 width: "26px",
                 title: "Editar" 
             },
-            { data: null, defaultContent: "<button type='button' id='btnEliminar' class='btn btn-danger'><i class='fas fa-trash-alt'></i></i></button>", title: "Eliminar"}
+            { data: null, defaultContent: "<button type='button' id='btnEliminar' class='btn btn-danger'><i class='fas fa-trash-alt'></i></i></button>", title: "Eliminar"},
         ]
     });
     // Agregar Personal Administrativo
     $(".modal-container").on("click", "#btnSave", function (e) {
         e.preventDefault();
         let Personal = {
-
+            
+            "FkTipodocumento": $("#FkTipodocumento").val(),
             "Numerodoc": $("#Numerodoc").val(),
             "Nombres": $("#Nombres").val(),
             "Apellidopaterno": $("#Apellidopaterno").val(),
@@ -79,6 +83,7 @@ $(document).ready(function () {
             "Telefono": $("#Telefono").val(),
             "Direccion": $("#Direccion").val(),
             "Email": $("#Email").val(),
+            "fkRoles": $("#FkRoles").val(),
             "Contrasenia": $("#Contrasenia").val()
         }
         Swal.fire({
@@ -132,16 +137,17 @@ $(document).ready(function () {
         $(".modal-container").on("click", "#btnUpdate", function (e) {
             e.preventDefault();
             let Personal = {
+                "FkTipodocumento": $("#FkTipodocumento").val(),
                 "IdUsuario": $("#IdUsuario").val(),
-                "Dni": $("#Numerodoc").val(),
+                "Numerodoc": $("#Numerodoc").val(),
                 "Nombres": $("#Nombres").val(),
                 "Apellidopaterno": $("#Apellidopaterno").val(),
                 "Apellidomaterno": $("#Apellidomaterno").val(),
                 "Telefono": $("#Telefono").val(),
                 "Direccion": $("#Direccion").val(),
                 "Email": $("#Email").val(),
-                "FkRoles": $("#FkRoles").val(),
-                "Passwords": $("#Contrasenia").val()
+                "fkRoles": $("#FkRoles").val(),
+                "Contrasenia": $("#Contrasenia").val()
             }
     
             Swal.fire({
@@ -153,7 +159,7 @@ $(document).ready(function () {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/Usuario/MantenimientoUsuario/UpdateUsuario',
+                        url: '/Usuario/MantenimientoUsuario/UpdateUsuario?id=${id}',
                         data: JSON.stringify(Personal),
                         type: 'POST',
                         contentType: "application/json;charset=utf-8",
@@ -202,7 +208,7 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: `/Usuario/DeleteUsuario`,
+                    url: `/Usuario/DeleteUsuario?id=${id}`,
                     data: JSON.stringify(id),                 
                     type: 'POST',
                     contentType: "application/json;charset=utf-8",
