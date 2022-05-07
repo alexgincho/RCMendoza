@@ -28,6 +28,8 @@ namespace RCMendoza
         {
             //services.AddControllers().AddJsonOptions(x =>
             //        x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddScoped<IRolesService, RolesService>();
+            services.AddScoped<IDocumentosService, DocumentosService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddControllersWithViews();
         }

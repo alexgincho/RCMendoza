@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RCMendoza.Models.Interfaces;
+using RCMendoza.Models.Services;
 using RCMendoza.Models.ModelDB;
 using RCMendoza.Response;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RCMendoza.Controllers
@@ -10,9 +13,14 @@ namespace RCMendoza.Controllers
     public class UsuarioController : Controller
     {
         private IUsuarioService IUsuario;
-        public UsuarioController(IUsuarioService _IUsuario)
+        private IRolesService _sRol;
+        private IDocumentosService _sDoc;
+        public UsuarioController(IUsuarioService _IUsuario, IRolesService sRol, IDocumentosService sDoc)
         {
             IUsuario = _IUsuario;
+            this._sRol = sRol;
+            this._sDoc = sDoc;
+
         }
         public IActionResult Index()
         {
@@ -21,6 +29,8 @@ namespace RCMendoza.Controllers
         public IActionResult MantenimientoUsuario()
         {
             Usuario entity = null;
+            ViewBag.Roles = _sRol.GetRoles();
+            ViewBag.Doc = _sDoc.GetDocumento();
             return PartialView("_MantenimientoUsuario",entity ?? new Usuario());
         }
         public IActionResult Dashboard()
