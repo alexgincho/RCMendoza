@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace RCMendoza.Controllers
 {
-    public class ProductosController : Controller
+    public class ProductoController : Controller
     {
         private IProductoService IProducto;
-        public ProductosController(IProductoService _IProducto)
+        public ProductoController(IProductoService _IProducto)
         {
             IProducto = _IProducto;
         }
