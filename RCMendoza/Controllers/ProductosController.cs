@@ -18,7 +18,10 @@ namespace RCMendoza.Controllers
         {
             return View();
         }
-
+        public IActionResult DetalleProducto()
+        {
+            return View();
+        }
         public IActionResult GetProductosAll()
         {
             Respuesta rpta = new Respuesta();
