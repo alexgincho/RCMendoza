@@ -1,14 +1,18 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using RCMendoza.Models.Interfaces;
 using RCMendoza.Models.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -32,6 +36,35 @@ namespace RCMendoza
             services.AddScoped<IDocumentosService, DocumentosService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<ILoginService, LoginService>();
+            services.AddTransient<ITokenService, TokenService>();
+            #region
+            // Configuracion de Sessiones ::: Login
+            //services.AddDistributedMemoryCache();
+            //services.AddSession(options => { 
+            //    options.IOTimeout = TimeSpan.FromSeconds(5);    
+            //    options.Cookie.HttpOnly = true;
+            //    options.Cookie.IsEssential = true;
+            //});
+            #endregion
+            // ===================== JWT ========================
+            services.AddSession();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = Configuration["Jwt:Issuer"],
+                        IssuerSigningKey = new
+                        SymmetricSecurityKey
+                        (Encoding.UTF8.GetBytes
+                        (Configuration["Jwt:Key"]))
+                    };
+                });
             services.AddControllersWithViews();
         }
 
@@ -51,6 +84,17 @@ namespace RCMendoza
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            #region JWT
+            app.UseSession();
+            app.Use(async (context, next) => {
+                var token = context.Session.GetString("Token");
+                if (!string.IsNullOrEmpty(token))
+                {
+                    context.Request.Headers.Add("Authorization", "Bearer " + token);
+                }
+                await next();
+            });
+            #endregion
             app.UseRouting();
 
             app.UseAuthorization();

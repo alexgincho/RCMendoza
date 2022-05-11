@@ -1,6 +1,7 @@
 ﻿using RCMendoza.Helpers;
 using RCMendoza.Models.Interfaces;
 using RCMendoza.Models.ModelDB;
+using RCMendoza.Request;
 using RCMendoza.Response;
 using System;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace RCMendoza.Models.Services
 {
     public class UsuarioService : IUsuarioService
     {
-        public async Task<Result> CreateUsuario(Usuario usuario)
+        public async Task<Result> CreateUsuario(UsuarioDto usuario)
         {
             Result result = null;
             try
@@ -178,7 +179,7 @@ namespace RCMendoza.Models.Services
             return result;
         }
 
-        public async Task<Result> UpdateUsuario(Usuario usuario)
+        public async Task<Result> UpdateUsuario(UsuarioDto usuario)
         {
             Result result = null;
             try

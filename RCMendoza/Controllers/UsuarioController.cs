@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RCMendoza.Request;
 
 namespace RCMendoza.Controllers
 {
@@ -40,7 +41,7 @@ namespace RCMendoza.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> MantenimientoUsuario([FromBody] Usuario usuario)
+        public async Task<IActionResult> MantenimientoUsuario([FromBody] UsuarioDto usuario)
         {
             Result result = null;
             try
@@ -59,6 +60,7 @@ namespace RCMendoza.Controllers
                         if (!result.Success) { throw new Exception(result.Message); }
                     }
                 }
+                else { throw new Exception(); }
             }
             catch (Exception ex)
             {

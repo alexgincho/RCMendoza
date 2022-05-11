@@ -11,12 +11,11 @@ namespace RCMendoza.Models.Services
 {
     public class LoginService : ILoginService
     {
-        public async Task<Result> AuthLogin(Login oModel)
+        public async Task<Usuario> AuthLogin(Login oModel)
         {
-            Result result = null;
+            Usuario result = null;
             try
-            {
-                result = new Result();
+            {         
                 string Password = Encrypt.GetSHA256(oModel.Password);
                 using (var db = new DBContext())
                 {
@@ -24,28 +23,15 @@ namespace RCMendoza.Models.Services
                     var oUser = db.Usuarios.Where(u=>u.Email == oModel.Usuario && u.Contrasenia == Password).FirstOrDefault();
                     if(oUser != null)
                     {
-                        result.Success = true;
-                        result.Message = "Usuario Valido";
-                        result.Data = new Usuario 
-                        {
-                            IdUsuario = oUser.IdUsuario,
-                            Nombres = oUser.Nombres,
-                            Apellidopaterno = oUser.Apellidopaterno,
-                            Apellidomaterno = oUser.Apellidomaterno,
-                            Email = oUser.Email,
-                            Direccion  = oUser.Direccion,
-                            Telefono = oUser.Telefono,
-                            FkRoles = oUser.FkRoles,
-                        };
+                        result = new Usuario();
+                        result = oUser;
                     }
-                    else { throw new Exception("Usuario o Contraseña incorrecta."); }
+                    else { throw new Exception(); }
                 }
             }
             catch (Exception ex)
             {
-                result.Success = false;
-                result.Message = ex.Message;
-                result.Data = null;
+                string error =  ex.Message;
             }
             return result;
         }
