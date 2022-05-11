@@ -36,7 +36,7 @@ namespace RCMendoza
             services.AddScoped<IDocumentosService, DocumentosService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IProductoService, ProductoService>();
-<<<<<<< HEAD
+            services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddTransient<ITokenService, TokenService>();
             #region
@@ -66,9 +66,6 @@ namespace RCMendoza
                         (Configuration["Jwt:Key"]))
                     };
                 });
-=======
-            services.AddScoped<IClienteService, ClienteService>();
->>>>>>> origin/yamil
             services.AddControllersWithViews();
         }
 
