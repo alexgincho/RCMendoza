@@ -95,7 +95,7 @@ namespace RCMendoza.Models.Services
                     //oModel.FkTipodocumentoNavigation = db.Tipodocumentos.Find(oModel.FkTipodocumento);
                     #endregion
                     var oModel = (from usu in db.Usuarios
-                                   join r in db.Roles on usu.FkRoles equals r.IdRoles
+                                   join r in db.Roles on usu.FkRoles equals r.IdDistrito
                                    join d in db.Tipodocumentos on usu.FkTipodocumento equals d.IdTipodocumento
                                    where usu.IdUsuario == id
                                    select new Usuario
@@ -142,7 +142,7 @@ namespace RCMendoza.Models.Services
                 using (var db = new DBContext())
                 {
                     var oModelList = (from usu in db.Usuarios
-                                     join r in db.Roles on usu.FkRoles equals r.IdRoles
+                                     join r in db.Roles on usu.FkRoles equals r.IdDistrito
                                      join d in db.Tipodocumentos on usu.FkTipodocumento equals d.IdTipodocumento
                                      select new Usuario
                                      {

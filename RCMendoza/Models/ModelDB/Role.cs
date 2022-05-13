@@ -12,7 +12,7 @@ namespace RCMendoza.Models.ModelDB
             Usuarios = new HashSet<Usuario>();
         }
 
-        public int IdRoles { get; set; }
+        public int IdDistrito { get; set; }
         public string Descripcion { get; set; }
 
         public virtual ICollection<Usuario> Usuarios { get; set; }

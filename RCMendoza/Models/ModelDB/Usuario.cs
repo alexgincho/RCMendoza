@@ -24,5 +24,7 @@ namespace RCMendoza.Models.ModelDB
 
         public virtual Role FkRolesNavigation { get; set; }
         public virtual Tipodocumento FkTipodocumentoNavigation { get; set; }
+        public object Razonsocial { get; internal set; }
+        public object IdProveedor { get; internal set; }
     }
 }
