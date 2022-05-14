@@ -34,7 +34,7 @@ namespace RCMendoza.Controllers
                     else
                     {
                         // Create
-                        result = await _IProveedor.CreateProveedor(proveedor);
+                        result = await _IProveedor.CreateProveedor(proveedor, result);
                         if (!result.Success) { throw new Exception(); }
                     }
                 }
