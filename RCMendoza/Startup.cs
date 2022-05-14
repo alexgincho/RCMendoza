@@ -1,9 +1,13 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RCMendoza.Models.ModelDB;
+using RCMendoza.Models.Validators;
 using RCMendoza.Models.Interfaces;
 using RCMendoza.Models.Services;
 using System;
@@ -32,6 +36,10 @@ namespace RCMendoza
             services.AddScoped<IDocumentosService, DocumentosService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddControllersWithViews();
+            // Inyectando Fluent Validation
+            services.AddMvc().AddFluentValidation();
+            // Agregando Inyeccion de Dependencias FluentValidation
+            services.AddTransient<IValidator<Usuario>, UsuarioValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -28,7 +28,7 @@ $(document).ready(function () {
     }
     // Listado de Personal Consumiendo Datataables
     let DataTablePersonal = TablePersonal.DataTable({
-        scrollY: 600,
+        scrollY: true,
         scrollX: true,
         paging: false,
         ordering:false,
@@ -49,7 +49,7 @@ $(document).ready(function () {
             { targets: 10, width: 100 }
         ],
         columns: [
-            { data: "fkTipodocumento", title: "Tipo Doc" },
+            { data: "fkRolesNavigation.descripcion", title: "Tipo Doc" },
             { data: "numerodoc", title: "Dni" },
             { data: "nombres", title: "Nombre" },
             { data: "apellidopaterno", title: "Apellido Paterno" },
@@ -58,7 +58,7 @@ $(document).ready(function () {
             { data: "direccion", title: "Direccion" },
             { data: "email", title: "Email" },
             { data: "fecharegistro", title: "Fecha de Registro" },
-            { data: "fkRoles", title: "Cargo" },
+            { data: "fkTipodocumentoNavigation.descripcion", title: "Cargo" },
             {
                 data: null,
                 defaultContent: "<button type='button' id='btnEditar' class='btn btn-primary'><i class='fas fa-pen-square'></i></i></button>",
@@ -102,13 +102,13 @@ $(document).ready(function () {
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
-                        if (data.state == 200) {
+                        if (data.success === true) {
                             console.log(data);
                             Swal.fire('Saved!', '', 'success')
                             $('#modal-default').modal('hide');
                              DataTablePersonal.ajax.reload();
                         }
-                        else if (data.state == 404) {
+                        else if (data.success === false) {
                             console.log(data);
                             Swal.fire(`Upss! ${data.message}`, '', 'info')
                             $('#modal-default').modal('hide');
@@ -166,13 +166,13 @@ $(document).ready(function () {
                         dataType: "json",
                         success: function (data) {
                             console.log(data);
-                            if (data.state == 200) {
+                            if (data.success === true) {
                                 console.log(data);
                                 Swal.fire('Update!', '', 'success')
                                 $('#modal-default').modal('hide');
-                                 DataTablePersonal.ajax.reload();
+                                DataTablePersonal.ajax.reload();
                             }
-                            else if (data.state == 404) {
+                            else if (data.success === false) {
                                 console.log(data);
                                 Swal.fire(`Error! ${data.message}`, '', 'info')
                                 $('#modal-default').modal('hide');
@@ -215,10 +215,10 @@ $(document).ready(function () {
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
-                        if (data.state == 200) {
+                        if (data.success === true) {
                             Swal.fire(
                                 'Eliminado!',
-                                `El Usuario ${nombre} a sido Desactivado.`,
+                                `El Usuario ${nombre} a sido eliminado.`,
                                 'success'
                             )
                             DataTablePersonal.ajax.reload();
