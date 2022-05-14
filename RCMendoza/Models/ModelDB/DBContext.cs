@@ -218,12 +218,12 @@ namespace RCMendoza.Models.ModelDB
 
             modelBuilder.Entity<Role>(entity =>
             {
-                entity.HasKey(e => e.IdRoles)
+                entity.HasKey(e => e.IdDistrito)
                     .HasName("roles_pkey");
 
                 entity.ToTable("roles");
 
-                entity.Property(e => e.IdRoles).HasColumnName("id_roles");
+                entity.Property(e => e.IdDistrito).HasColumnName("id_roles");
 
                 entity.Property(e => e.Descripcion)
                     .HasMaxLength(100)
@@ -323,6 +323,11 @@ namespace RCMendoza.Models.ModelDB
             });
 
             OnModelCreatingPartial(modelBuilder);
+        }
+
+        internal void Remove<T>(Proveedor oModel)
+        {
+            throw new NotImplementedException();
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
