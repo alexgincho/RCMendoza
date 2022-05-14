@@ -8,7 +8,7 @@ namespace RCMendoza.Models.Interfaces
 {
     public interface IProveedorService
     {
-        public Task<Result> CreateProveedor(Proveedor proveedor )
+        public Task<Result> CreateProveedor(Proveedor proveedor, Task<Result> result)
         {
             Result result = null;
             try
