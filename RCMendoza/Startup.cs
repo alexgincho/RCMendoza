@@ -40,6 +40,7 @@ namespace RCMendoza
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddTransient<ITokenService, TokenService>();
+            services.AddScoped<IProveedorService, ProveedorService>();
             #region
             // Configuracion de Sessiones ::: Login
             //services.AddDistributedMemoryCache();

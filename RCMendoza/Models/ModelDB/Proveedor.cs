@@ -25,5 +25,6 @@ namespace RCMendoza.Models.ModelDB
         public virtual Distrito FkDistritoNavigation { get; set; }
         public virtual Tipodocumento FkTipodocumentoNavigation { get; set; }
         public virtual ICollection<Producto> Productos { get; set; }
+        public Distrito FkNavigation { get; internal set; }
     }
 }
